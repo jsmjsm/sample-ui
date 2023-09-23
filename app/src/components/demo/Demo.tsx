@@ -86,15 +86,7 @@ export const Demo = () => {
             >
               Collections
             </Button>
-            {/* <Button
-              colorScheme="teal"
-              variant={view === View.Permissions ? "solid" : "outline"}
-              onClick={() => {
-                setView(View.Permissions);
-              }}
-            >
-              Permissions
-            </Button> */}
+            
 
             <Button
               colorScheme="teal"

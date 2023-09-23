@@ -5,16 +5,18 @@ import {
 } from "@chakra-ui/react";
 import { AppProps } from "next/app";
 import Head from "next/head";
-import { FC, useState } from "react";
+import { FC, useMemo, useState } from "react";
 import { AppBar } from "../components/AppBar";
 import { Footer } from "../components/Footer";
 import {
   InscriptionsProgramProvider,
   MetadataProgramProvider,
   Notifications,
-} from  "@libreplex/shared-ui";
-import { ContextProvider } from  "@libreplex/shared-ui";
+} from "@libreplex/shared-ui";
+import { ContextProvider } from "@libreplex/shared-ui";
 import { ContentContainer } from "../components/ContentContainer";
+import React from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 require("@solana/wallet-adapter-react-ui/styles.css");
 require("../styles/globals.css");
@@ -23,6 +25,19 @@ const manager = createLocalStorageManager("colormode-key");
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            refetchOnWindowFocus: false,
+            refetchOnReconnect: false,
+            retry: false,
+            staleTime: 24 * 60 * 60 * 1000,
+          },
+        },
+      })
+  );
   return (
     <>
       <Head>
@@ -39,7 +54,9 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
                 <AppBar isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
                 <ContentContainer>
                   <PortalManager>
-                    <Component {...pageProps} />
+                    <QueryClientProvider client={queryClient}>
+                      <Component {...pageProps} />
+                    </QueryClientProvider>
                     {/* <Footer /> */}
                   </PortalManager>
                 </ContentContainer>
