@@ -32,7 +32,8 @@ const InscriptionAction = ({
   } = useInscriptionForRoot(legacyMint.mint);
 
   return data?.item ? (
-    <ViewLegacyInscription mint={legacyMint.mint} />
+    <></>
+    // <ViewLegacyInscription mint={legacyMint.mint} />
   ) : (
     <InscribeLegacyMetadataAsHolderTransactionButton
       params={{ mint: legacyMint }}
