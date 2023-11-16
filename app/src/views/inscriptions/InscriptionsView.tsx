@@ -33,11 +33,11 @@ const InscriptionAction = ({
 
   return data?.item ? (
     <ViewLegacyInscription mint={legacyMint.mint} />
-  ) : (<></>
-    // <InscribeLegacyMetadataAsHolderTransactionButton
-    //   params={{ mint: legacyMint }}
-    //   formatting={{}}
-    // />
+  ) : (
+    <InscribeLegacyMetadataAsHolderTransactionButton
+      params={{ mint: legacyMint }}
+      formatting={{}}
+    />
   );
 };
 
@@ -120,7 +120,7 @@ const InscriptionsView = () => {
                 </ListItem>
               </UnorderedList>
 
-              <InscriptionsSummary mt={4} mb={4} />
+              {/* <InscriptionsSummary mt={4} mb={4} /> */}
               <Box
                 mt={6}
                 sx={{
@@ -152,8 +152,8 @@ const InscriptionsView = () => {
                 </Button>
                 {/* <Button>Mint new</Button> */}
               </Box>
-              {view === View.InscriptionGallery && <InscriptionGallery />}
-              {view === View.Inscriber && <LegacyCollectionInscriber />}
+              {/* {view === View.InscriptionGallery && <InscriptionGallery />} */}
+              {/* {view === View.Inscriber && <LegacyCollectionInscriber />} */}
             </Box>
           </Box>
         </Box>
