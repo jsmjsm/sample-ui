@@ -6,7 +6,7 @@ import {
   useOffChainMetadataCache,
 } from "@libreplex/shared-ui";
 import { PublicKey } from "@solana/web3.js";
-import { InscriptionImage } from "shared-ui/src/components/inscriptionDisplay/InscriptionImage";
+import { InscriptionImage } from "@libreplex/shared-ui";
 import { CreateNewLegacyInscriptionModal } from "./CreateNewLegacyInscriptionModal";
 
 export const MintMigratorRow = ({ mint }: { mint: PublicKey }) => {

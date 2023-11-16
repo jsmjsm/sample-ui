@@ -1,11 +1,12 @@
-import { useInscriptionWriteStatus } from "@app/components/inscriptions/WriteToInscriptionTransactionButton";
-import { ImageUploader } from "@app/components/shadowdrive/ImageUploader";
+import { useInscriptionWriteStatus } from "@components/inscriptions/WriteToInscriptionTransactionButton";
+import { ImageUploader } from "@components/shadowdrive/ImageUploader";
 import { VStack } from "@chakra-ui/react";
 import { PublicKey } from "@solana/web3.js";
 import { Dispatch, SetStateAction, useMemo, useState } from "react";
-import { useOffchainImageAsBuffer } from "shared-ui/src/components/inscriptionDisplay/useOffchainImageAsBuffer";
+import { useOffchainImageAsBuffer } from "@libreplex/shared-ui";
 import { useInscriptionForRoot } from "@libreplex/shared-ui";
 import { IImageUploadProgressState, Stage, StageProgress } from "./useImageUploadProgressState";
+import React from "react";
 
 export interface IImageUploaderState {
   imageOverride: string;

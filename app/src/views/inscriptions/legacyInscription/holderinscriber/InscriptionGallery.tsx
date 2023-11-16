@@ -5,8 +5,9 @@ import { decodeInscriptionRankPage } from "@libreplex/shared-ui";
 import { useFetchSingleAccount } from "@libreplex/shared-ui";
 import { Button, HStack, Heading, VStack } from "@chakra-ui/react";
 import { InscriptionCardLegacy } from "../InscriptionCardLegacy";
-import { Paginator } from "@app/components/Paginator";
 import { useInscriptionSummary } from "../../useInscriptionsSummary";
+import React from "react";
+import { Paginator } from "../../../../components/Paginator";
 
 export const InscriptionGallery = () => {
   const inscriptionPageId = useMemo(
@@ -26,7 +27,7 @@ export const InscriptionGallery = () => {
   const [currentPage, setCurrentPage] = useState<number>(0);
 
   const { item, pubkey } = useMemo(() => {
-    if (inscriptionSummary && data) {
+    if (inscriptionSummary?.item && data?.item) {
       const start = Math.max(
         Number(inscriptionSummary.item.inscriptionCountTotal) -
           (currentPage + 1) * ITEMS_PER_PAGE,
@@ -51,7 +52,7 @@ export const InscriptionGallery = () => {
 
   const maxPages = useMemo(() => {
     // console.log({l: data?.item?.buffer.length, m: Math.ceil((data?.item?.buffer.length - 12 ) / 32 / ITEMS_PER_PAGE)});
-    return Math.ceil((data?.item?.buffer.length - 12) / 32 / ITEMS_PER_PAGE);
+    return data?.item?.buffer.length ? Math.ceil((data?.item?.buffer.length - 12) / 32 / ITEMS_PER_PAGE) : 0;
   }, [data?.item?.buffer.length]);
 
   const inscriptionKeysReversed = useMemo(

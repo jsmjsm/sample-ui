@@ -8,7 +8,9 @@ export interface ITransactionTemplate {
     pubkey: string
   }[],
   description: string,
-  blockhash: {
+
+  // if undefined, will be provided by the executor prior to signing
+  blockhash?: {
     blockhash: string,
     lastValidBlockHeight: number;
   }

@@ -17,7 +17,7 @@ import {
   TransactionInstruction,
 } from "@solana/web3.js";
 
-import { NEXT_PUBLIC_LEGACY_INSCRIPTIONS_PROGRAM_ID } from "@app/environmentvariables";
+
 import { HStack, Progress, Text } from "@chakra-ui/react";
 import { notify } from "@libreplex/shared-ui";
 import { AccountLayout } from "@solana/spl-token";
@@ -28,6 +28,7 @@ import {
   BATCH_SIZE,
   useInscriptionWriteStatus,
 } from "../inscriptions/WriteToInscriptionTransactionButton";
+import { NEXT_PUBLIC_LEGACY_INSCRIPTIONS_PROGRAM_ID } from "../../environmentvariables";
 
 export interface IWriteToLegacyInscriptionAsHolder {
   mint: PublicKey;

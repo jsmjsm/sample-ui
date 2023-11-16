@@ -3,7 +3,7 @@ import { useConnection } from "@solana/wallet-adapter-react";
 import { PublicKey } from "@solana/web3.js";
 import { useCallback, useMemo } from "react";
 import { useQuery } from "react-query";
-import { MintWithTokenAccount } from "shared-ui/src";
+import { MintWithTokenAccount } from "@libreplex/shared-ui";
 
 export const useOwnerOfMint = (mint: PublicKey) => {
   const { connection } = useConnection();
@@ -11,7 +11,7 @@ export const useOwnerOfMint = (mint: PublicKey) => {
     try {
       const tokenAccounts = await connection.getTokenLargestAccounts(mint);
 
-      let tokenAccount: PublicKey;
+      let tokenAccount: PublicKey | undefined = undefined;
 
       for (const ta of tokenAccounts.value) {
         if (BigInt(ta.amount) > BigInt(0)) {
@@ -24,6 +24,10 @@ export const useOwnerOfMint = (mint: PublicKey) => {
       }
 
       const tokenAccountData = await connection.getAccountInfo(tokenAccount);
+
+      if (!tokenAccountData) {
+        throw Error("Token account not found for mint");
+      }
 
       const tokenAccountObj = AccountLayout.decode(tokenAccountData.data);
 

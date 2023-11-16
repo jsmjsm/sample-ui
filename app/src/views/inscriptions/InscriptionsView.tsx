@@ -1,4 +1,4 @@
-import { InscribeLegacyMetadataAsHolderTransactionButton } from "@app/components/legacyInscriptions/InscribeLegacyMetadataAsHolderTransactionButton";
+import { InscribeLegacyMetadataAsHolderTransactionButton } from "@/components/legacyInscriptions/InscribeLegacyMetadataAsHolderTransactionButton";
 import {
   Box,
   Button,
@@ -16,6 +16,7 @@ import { InscriptionsSummary } from "./InscriptionsSummary";
 import { ViewLegacyInscription } from "./legacyInscription/ViewLegacyInscription";
 import { LegacyCollectionInscriber } from "./legacyInscription/collectioninscriber/LegacyCollectionInscriber";
 import { InscriptionGallery } from "./legacyInscription/holderinscriber/InscriptionGallery";
+import React from "react";
 
 enum View {
   InscriptionGallery,

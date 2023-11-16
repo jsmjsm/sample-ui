@@ -23,6 +23,7 @@ import {
   notify,
 } from "@libreplex/shared-ui";
 import { useStore } from "zustand";
+import React from "react";
 
 export interface IWriteToInscription {
   inscription: IRpcObject<Inscription>;
@@ -87,7 +88,7 @@ export const writeToInscription = async (
     blockhash,
   });
 
-  while (remainingBytes.length > 0) {
+  while (inscriptionsProgram && remainingBytes.length > 0) {
     console.log("BATCH CREATING", remainingBytes.length);
     const instructions: TransactionInstruction[] = [];
     const byteBatch = remainingBytes.splice(0, BATCH_SIZE);
@@ -131,7 +132,7 @@ export const useInscriptionWriteStatus = (
   inscription: PublicKey
 ) => {
   const expectedCount = useMemo(
-    () => dataBytes ? Math.ceil(dataBytes.length / BATCH_SIZE) : 0,
+    () => (dataBytes ? Math.ceil(dataBytes.length / BATCH_SIZE) : 0),
     [dataBytes]
   );
   const store = useContext(InscriptionStoreContext);
@@ -204,7 +205,7 @@ export const WriteToInscriptionTransactionButton = (
         <GenericTransactionButton<IWriteToInscription>
           text={"Write"}
           transactionGenerator={writeToInscription}
-          onError={(msg) => notify({ message: msg })}
+          onError={(msg) => notify({ message: msg ?? 'Unknown error' })}
           {...props}
         />
       )}

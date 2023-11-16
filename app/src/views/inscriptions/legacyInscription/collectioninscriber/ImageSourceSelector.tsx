@@ -1,18 +1,16 @@
-import { ImageUploader } from "@app/components/shadowdrive/ImageUploader";
 import { Button, HStack, VStack } from "@chakra-ui/react";
-import { SetState } from "immer/dist/internal";
-import { Dispatch, SetStateAction, useState } from "react";
-import {
-  CustomImageUploader,
-  IImageUploaderState,
-} from "./CustomImageUploader";
 import { PublicKey } from "@solana/web3.js";
-import { IImageUploadProgressState } from "./useImageUploadProgressState";
+import React, { Dispatch, SetStateAction, useState } from "react";
+import {
+    CustomImageUploader,
+    IImageUploaderState,
+} from "./CustomImageUploader";
 import { OffchainUploader } from "./OffchainUploader";
+import { IImageUploadProgressState } from "./useImageUploadProgressState";
 
 export interface IImageSourceState {
   imageBuffer: Buffer | undefined;
-  setImageBuffer: Dispatch<SetStateAction<Buffer>>;
+  setImageBuffer: Dispatch<SetStateAction<Buffer | undefined>>;
 }
 
 export const useImageSourceState = (): IImageSourceState => {

@@ -65,7 +65,8 @@ export {
   InscriptionsProgramContext,
   SquadsProgramContext,
   SquadsProgramProvider,
-  useMultiSigById
+  useMultiSigById,
+  useMultipleAccountsById
 } from "./sdk";
 export type {
   AttributeType,
@@ -113,12 +114,12 @@ export {
 
   /// icons
   ShareIcon,
-
   useLegacyCompressedImage,
   useOffChainMetadataCache,
   useMediaType,
   useUrlPrefixForInscription,
-  mediaTypeToString
+  mediaTypeToString,
+  useOffchainImageAsBuffer
 } from "./components";
 
 export {

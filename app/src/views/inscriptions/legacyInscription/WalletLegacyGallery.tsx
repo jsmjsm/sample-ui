@@ -9,7 +9,7 @@ import {
 import { useConnection } from "@solana/wallet-adapter-react";
 import { PublicKey } from "@solana/web3.js";
 
-import { Paginator } from "@app/components/Paginator";
+import { Paginator } from "@/components/Paginator";
 import {
   MintWithTokenAccount,
   getInscriptionPda,
@@ -17,9 +17,9 @@ import {
 } from "@libreplex/shared-ui";
 import { ReactNode, useMemo, useState } from "react";
 
-import { useMultipleAccountsById } from "shared-ui/src/sdk/query/metadata/useMultipleAccountsById";
+import { useMultipleAccountsById } from "@libreplex/shared-ui";
 import { InscriptionFilter, MintCardLegacy } from "./MintCardLegacy";
-import { DisappearingBox } from "@app/components/DisappearingBox";
+import { DisappearingBox } from "@/components/DisappearingBox";
 
 export const WalletLegacyGallery = ({
   publicKey,

@@ -27,8 +27,9 @@ export { AssetDisplay } from "./assetdisplay/AssetDisplay";
 export {useOffChainMetadataCache} from "./assetdisplay/useOffChainMetadataCache"
 export { useLegacyCompressedImage } from "./assetdisplay/useLegacyCompressedImage";
 export {useUrlPrefixForInscription} from "./inscriptionDisplay/useUrlPrefixForInscription"
+export {InscriptionImage} from "./inscriptionDisplay/InscriptionImage"
 export { ScannerLink } from "./ScannerLink";
-
+export {useOffchainImageAsBuffer} from "./inscriptionDisplay/useOffchainImageAsBuffer"
 export { MintDisplay } from "./MintDisplay";
 
 export { ShareIcon } from "./icons";
