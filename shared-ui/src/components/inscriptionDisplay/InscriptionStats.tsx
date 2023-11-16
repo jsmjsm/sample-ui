@@ -51,7 +51,7 @@ export const InscriptionStats = ({ root }: { root: PublicKey }) => {
         SOL
       </Badge>
       <SolscanLink
-        address={inscriptionData.pubkey.toBase58()}
+        address={inscriptionData?.pubkey?.toBase58()}
         cluster={cluster}
       />
     </div>
