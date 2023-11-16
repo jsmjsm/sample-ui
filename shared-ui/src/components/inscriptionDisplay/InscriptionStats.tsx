@@ -14,7 +14,10 @@ export const InscriptionStats = ({root}:{root: PublicKey}) => {
 
     return inscription?.item ? 
     <div
-      className="flex flex-col items-end absolute top-2 right-2 z-10"
+      className="flex flex-col items-end absolute top-2 right-2 z-100"
+      style={{zIndex: 100,
+      right: "8px",
+    top: "8px"}}
     >
       <Badge
         sx={{
