@@ -23,6 +23,8 @@ import { ITransaction } from "../../transactions/ITransaction";
 
 import { AccountLayout } from "@solana/spl-token";
 import { getLegacyInscriptionPda } from "shared-ui/src/pdas/getLegacyInscriptionPda";
+import { useRentForData } from "@app/views/inscriptions/legacyInscription/collectioninscriber/useRentForData";
+import { VStack, Text } from "@chakra-ui/react";
 
 export interface IResizeLegacyInscription {
   mint: PublicKey;
@@ -173,12 +175,18 @@ export const ResizeLegacyMetadataAsUAuthTransactionButton = (
     "transactionGenerator"
   >
 ) => {
+
+  const rent = useRentForData(Math.max(props.params.targetSize, 10000) ??0)
   return (
+    <VStack>
+          <Text> Final rent: {rent} SOL</Text>
     <GenericTransactionButton<IResizeLegacyInscription>
       text={`Resize`}
       transactionGenerator={resizeLegacyInscription}
       onError={(msg) => notify({ message: msg ?? "Unknown error" })}
       {...props}
     />
+
+    </VStack>
   );
 };

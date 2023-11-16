@@ -115,8 +115,7 @@ const InscriptionsView = () => {
                 </ListItem> */}
                 <ListItem>
                   <Text fontSize={"2xl"}>
-                    FOC Fact #5: You can make your inscriptions less blurry by
-                    using PNG / SVG instead of JPEG.
+                    FOC FACT #4: PNG / SVG are less blurry than JPEGs
                   </Text>
                 </ListItem>
               </UnorderedList>

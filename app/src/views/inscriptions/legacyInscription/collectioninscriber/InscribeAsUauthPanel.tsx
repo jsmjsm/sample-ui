@@ -251,7 +251,6 @@ export const InscribeAsUauthPanel = ({ mint }: { mint: PublicKey }) => {
 
       <VStack>
         <Text>Buffer length: {imageBuffer?.length}</Text>
-        <Link href={imageOverride} target="_blank" >View original</Link>
         {imageBuffer && !sizeOk && (
           <ResizeLegacyMetadataAsUAuthTransactionButton
             params={{

@@ -23,6 +23,7 @@ import Link from "next/link";
 import { ReactNode, useEffect, useMemo } from "react";
 import { HiMagnifyingGlassCircle } from "react-icons/hi2";
 import { TbRefresh } from "react-icons/tb";
+import { InscriptionStats } from "@libreplex/shared-ui";
 import { decodeLegacyMetadata } from "shared-ui/src/sdk/query/legacymetadata";
 import { useFetchSingleAccount } from "shared-ui/src/sdk/query/singleAccountInfo";
 const textMotion = {
@@ -75,8 +76,6 @@ export const MintCardLegacy = ({
     inscription: { data: inscription, refetch, isFetching },
   } = useInscriptionForRoot(mintId);
 
-  
-  const formattedSize = useFormattedNumber(inscription?.item?.size ?? 0, 0);
 
   return (
     <Box
@@ -88,36 +87,7 @@ export const MintCardLegacy = ({
       whileHover="hover"
       sx={{ position: "relative", ...rest.sx }}
     >
-      {inscription?.item && (
-        <div
-          className="flex flex-col items-end absolute top-2 right-2 z-10"
-        >
-          <Badge
-            sx={{
-              border: "1px solid #aaa",
-              background: "#333",
-            }}
-          >
-            #{inscription.item.order.toNumber().toLocaleString()}
-          </Badge>
-          <Badge
-            sx={{
-              border: "1px solid #aaa",
-              background: "#333",
-            }}
-          >
-            Size: {formattedSize}B
-          </Badge>
-          <Badge
-            sx={{
-              border: "1px solid #aaa",
-              background: "#333",
-            }}
-          >
-             Rent: {(Math.round((0.00089088 + 0.00000696 * inscription?.item?.size)*100)/100).toFixed(2)} SOL
-          </Badge>
-        </div>
-      )}
+      <InscriptionStats root={mintId}/>
       {mintId && (
         <>
           <Box sx={{ height: "200px" }}>
