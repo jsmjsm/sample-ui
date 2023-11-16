@@ -4,8 +4,8 @@ import { METADATA } from "./constants";
 
 
 export const getMetadataPda = (programId: PublicKey, mint: PublicKey) => {
-  return PublicKey.findProgramAddressSync(
+  return mint ? PublicKey.findProgramAddressSync(
     [Buffer.from(METADATA), mint.toBuffer()],
     new PublicKey(programId)
-  );
+  ) : undefined;
 };

@@ -4,8 +4,8 @@ import { PublicKey } from "@solana/web3.js";
 
 
 export const getLegacySignerPda = (programId: PublicKey, mint: PublicKey) => {
-  return PublicKey.findProgramAddressSync(
+  return mint ? PublicKey.findProgramAddressSync(
     [mint.toBuffer()],
     new PublicKey(programId)
-  );
+  ) : undefined;
 };
