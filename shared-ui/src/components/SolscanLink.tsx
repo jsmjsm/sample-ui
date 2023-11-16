@@ -33,13 +33,13 @@ export const SolscanLink = ({
     {txid ? (
       <Box m={0.1}>
         {/* <Badge badgeContent={"tx"} color="primary"> */}
-        <img width={"24"} src="/solscan.png" />
+        <img width={"20"} src="/solscan.png" />
         {/* </Badge> */}
       </Box>
     ) : (
       <img
         style={{ position: "relative", cursor: "pointer" }}
-        width={"24"}
+        width={"20"}
         src="/solscan.png"
       />
     )}

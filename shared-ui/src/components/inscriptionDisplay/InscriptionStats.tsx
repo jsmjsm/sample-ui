@@ -1,23 +1,24 @@
-import { PublicKey } from "@solana/web3.js"
-import React from "react"
-import { useInscriptionForRoot } from "../../sdk";
-import {Badge} from "@chakra-ui/react"
+import { PublicKey } from "@solana/web3.js";
+import React from "react";
+import { useInscriptionDataForRoot, useInscriptionForRoot } from "../../sdk";
+import { Badge } from "@chakra-ui/react";
 import { useFormattedNumber } from "../../utils/useFormattedNumber";
-export const InscriptionStats = ({root}:{root: PublicKey}) => {
-    const {
-        inscription: { data: inscription, refetch, isFetching },
-      } = useInscriptionForRoot(root);
+import { SolscanLink } from "../SolscanLink";
+import { useCluster } from "../../contexts";
+export const InscriptionStats = ({ root }: { root: PublicKey }) => {
+  const { data: inscriptionData } = useInscriptionDataForRoot(root);
 
+  const { cluster } = useCluster();
 
-      const formattedSize = useFormattedNumber(inscription?.item?.size ?? 0, 0);
+  const {
+    inscription: { data: inscription, refetch, isFetching },
+  } = useInscriptionForRoot(root);
 
+  const formattedSize = useFormattedNumber(inscription?.item?.size ?? 0, 0);
 
-    return inscription?.item ? 
+  return inscription?.item ? (
     <div
-      className="flex flex-col items-end absolute top-2 right-2 z-100"
-      style={{zIndex: 100,
-      right: "8px",
-    top: "8px"}}
+      style={{ zIndex: 100, right: "8px", top: "8px", display :"flex", flexDirection :"column", alignItems: "end", gap: '4px', position :"absolute" }}
     >
       <Badge
         sx={{
@@ -41,8 +42,20 @@ export const InscriptionStats = ({root}:{root: PublicKey}) => {
           background: "#333",
         }}
       >
-         Rent: {(Math.round((0.00089088 + 0.00000696 * inscription?.item?.size)*100)/100).toFixed(2)} SOL
+        Rent:{" "}
+        {(
+          Math.round(
+            (0.00089088 + 0.00000696 * inscription?.item?.size) * 100
+          ) / 100
+        ).toFixed(2)}{" "}
+        SOL
       </Badge>
-    </div> : <></>
-}
-  
+      <SolscanLink
+        address={inscriptionData.pubkey.toBase58()}
+        cluster={cluster}
+      />
+    </div>
+  ) : (
+    <></>
+  );
+};
